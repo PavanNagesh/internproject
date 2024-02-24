@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DSG TO DO</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: Century gothic;
+    }
+
+    html {
+      background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('{% static "timemanage/scenery4.jpg" %}');
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 500px;
+      margin: 0 auto;
+      margin-top: 70px;
+    }
+
+    label {
+      margin-top: 10px;
+      color: navajowhite;
+      font: size 12px;
+    }
+
+    input[type="text"], input[type="date"], input[type="time"], select {
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: lightgray;
+      border: 1px solid black;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: ghostwhite;
+    }
+
+    .button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .btn {
+      border: 1px solid #fff;
+      padding: 10px 30px;
+      color: white;
+      text-decoration: none;
+      transition: 0.6s ease;
+    }
+
+    .btn:hover {
+      background-color: white;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><center>Lets create a Task!!</center></h1>
+    <form>
+      <label for="task">Task to do:</label>
+      <input type="text" id="task" name="task">
+      
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date">
+      
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time">
+      
+      <label for="important">Important:</label>
+      <input type="checkbox" id="important" name="important">
+    </form>
+    <div class="button">
+      <a href="{% url 'congo' %}" class="btn">Submit</a>
+    </div>
+    <!-- taskform.html -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+  </header>
+</body>
+</html>
